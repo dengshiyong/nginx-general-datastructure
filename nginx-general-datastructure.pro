@@ -11,5 +11,8 @@ qtcAddDeployment()
 
 HEADERS += \
     ngx_string.h \
-    ngx_config.h
+    ngx_config.h \
+    ngx_core.h \
+    ngx_rbtree.h \
+    ngx_time.h
 
