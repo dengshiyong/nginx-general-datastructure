@@ -30,6 +30,7 @@ struct ngx_log_s {
 
     ngx_log_t *next;
 };
+#define NGX_MAX_ERROR_STR 2048
 /*********************************/
 #if (NGX_HAVE_C99_VARIADIC_MACROS)
 #define NGX_HAVE_VARIADIC_MACROS 1
@@ -50,7 +51,11 @@ void ngx_log_error_core (ngx_uint_t level,ngx_log_t *log,ngx_err_t err,const cha
 /*********************************/
 #else  /* NO VARIADIC MACROS */
 #define NGX_HAVE_VARIADIC_MACROS 0
-void ngx_cdecl
+void ngx_cdecl ngx_log_error (ngx_uint_t level,ngx_log_t * log,ngx_err_t err,const char * fmt,...);
+void ngx_cdecl ngx_log_error_core (ngx_uint_t level,ngx_log_t * log,ngx_err_t err,const char *fmt,va_list args);
+void ngx_cdecl ngx_log_debug_core (ngx_log_t *log,ngx_err_t err,const char *fmt,...);
+
+#endif /* VARIADIC MACROS */
 
 #endif // NGX_LOG_H
 

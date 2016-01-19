@@ -7,7 +7,9 @@ SOURCES += \
     ngx_string.c \
     test_ngx_sprintf.c \
     ngx_palloc.c \
-    ngx_alloc.c
+    ngx_alloc.c \
+    ngx_log.c \
+    ngx_times.c
 
 include(deployment.pri)
 qtcAddDeployment()
@@ -28,5 +30,6 @@ HEADERS += \
     ngx_log.h \
     ngx_conf_file.h \
     ngx_alloc.h \
-    ngx_errno.h
+    ngx_errno.h \
+    ngx_times.h
 

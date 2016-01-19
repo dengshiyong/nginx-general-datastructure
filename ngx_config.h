@@ -27,5 +27,9 @@ typedef intptr_t ngx_int_t;
 
 #define ngx_align(d,a) (((d)+(a-1)) & ~(a-1))
 #define ngx_align_ptr(p,a)   (u_char*) (((uintptr_t )(p) + ((uintptr_t)a - 1)) & ~ ((uintptr_t)a - 1))
+
+#ifndef ngx_inline
+#define ngx_inline inline
+#endif
 #endif // NGX_CONFIG_H
 
