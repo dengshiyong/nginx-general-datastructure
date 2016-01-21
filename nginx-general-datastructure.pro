@@ -9,11 +9,13 @@ SOURCES += \
     ngx_palloc.c \
     ngx_alloc.c \
     ngx_log.c \
-    ngx_times.c
+    ngx_times.c \
+    ngx_time.c
 
 include(deployment.pri)
 qtcAddDeployment()
-INCLUDEPATH += /usr/lib/gcc/x86_64-linux-gnu/4.8/include/
+INCLUDEPATH += . \
+        /usr/lib/gcc/x86_64-linux-gnu/4.8/include/
 HEADERS += \
     ngx_string.h \
     ngx_config.h \
@@ -31,5 +33,6 @@ HEADERS += \
     ngx_conf_file.h \
     ngx_alloc.h \
     ngx_errno.h \
-    ngx_times.h
+    ngx_times.h \
+    ngx_auto_config.h
 

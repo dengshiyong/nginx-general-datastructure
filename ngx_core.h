@@ -26,7 +26,7 @@ typedef struct ngx_open_file_s ngx_open_file_t;
 #include "ngx_alloc.h"
 #include "ngx_errno.h"
 #include "ngx_times.h"
-
+#include "ngx_auto_config.h"
 
 #define CR (u_char)'\r'
 #define LF (u_char)'\n'
