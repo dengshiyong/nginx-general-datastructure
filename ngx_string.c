@@ -1,5 +1,24 @@
 #include "ngx_core.h"
 
+u_char * ngx_cpystrn(u_char *dst,u_char *src,size_t n){
+    if (n == 0){
+        return dst;
+    }
+
+    while (--n){
+        *dst = *src;
+        if (*dst == '\0'){
+            return dst;
+        }
+        dst++;
+        src++;
+    }
+
+    *dst = '\0';
+
+    return dst;
+}
+
 /*
  * supported formats:
  *    %[0][width][x][X]O        off_t
@@ -39,6 +58,15 @@ ngx_sprintf(u_char *buf,const char *fmt,...){
     p = ngx_vslprintf(buf,(void *)-1,fmt,args);
     va_end (args);
 
+    return p;
+}
+
+u_char * ngx_cdecl  ngx_slprintf(u_char *buf,u_char *last,const char *fmt,...){
+    u_char *p;
+    va_list args;
+    va_start(args,fmt);
+    p = ngx_vslprintf(buf,last,fmt,args);
+    va_end (args,fmt);
     return p;
 }
 

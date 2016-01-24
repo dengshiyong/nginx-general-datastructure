@@ -2,7 +2,18 @@
 #define NGX_LOG_H
 #include "ngx_core.h"
 
+#define NGX_LOG_EMERG 1
+#define NGX_LOG_WARN 5
+#define NGX_LOG_NOTICE 6
 #define NGX_LOG_DEBUG 8
+
+/*
+ * do not forget to update debug_levels[] in src/core/ngx_log.c
+ * after the adding a new debug level
+ */
+
+#define NGX_LOG_DEBUG_CONNECTION 0x80000000
+
 typedef u_char * (*ngx_log_handler_pt) (ngx_log_t *log,u_char *buf,size_t len);
 typedef void (*ngx_log_writer_pt) (ngx_log_t *log,ngx_uint_t level,u_char * buf,size_t len);
 
@@ -54,8 +65,11 @@ void ngx_log_error_core (ngx_uint_t level,ngx_log_t *log,ngx_err_t err,const cha
 void ngx_cdecl ngx_log_error (ngx_uint_t level,ngx_log_t * log,ngx_err_t err,const char * fmt,...);
 void ngx_cdecl ngx_log_error_core (ngx_uint_t level,ngx_log_t * log,ngx_err_t err,const char *fmt,va_list args);
 void ngx_cdecl ngx_log_debug_core (ngx_log_t *log,ngx_err_t err,const char *fmt,...);
-
 #endif /* VARIADIC MACROS */
 
+ngx_log_t * ngx_log_init(u_char *prefix);
+u_char * ngx_log_errno (u_char *buf,u_char *last,ngx_err_t err);
+
+extern ngx_uint_t ngx_use_stderr;
 #endif // NGX_LOG_H
 

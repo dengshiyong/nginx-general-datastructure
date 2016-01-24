@@ -9,6 +9,10 @@ typedef struct {
 void ngx_gmtime(time_t t,ngx_tm_t *tp);
 void ngx_time_init (void);
 void ngx_time_update(void);
+
+extern volatile ngx_time_t *ngx_cached_time;
+
+#define ngx_time() ngx_cached_time->sec
+
 extern volatile ngx_str_t ngx_cached_err_log_time;
 #endif // NGX_TIMES_H
-

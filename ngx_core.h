@@ -3,12 +3,19 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdarg.h>
-
+// string.h defined the strerror function
+#include <string.h>
+//errno.h defined the errno macro
+#include <errno.h>
 typedef struct ngx_pool_s ngx_pool_t;
 typedef struct ngx_chain_s ngx_chain_t;
 typedef struct ngx_file_s ngx_file_t;
 typedef struct ngx_log_s ngx_log_t;
 typedef struct ngx_open_file_s ngx_open_file_t;
+
+
+#define NGX_OK 0
+#define NGX_ERROR -1
 
 #include "ngx_config.h"
 #include "ngx_rbtree.h"
@@ -24,7 +31,6 @@ typedef struct ngx_open_file_s ngx_open_file_t;
 #include "ngx_log.h"
 #include "ngx_conf_file.h"
 #include "ngx_alloc.h"
-#include "ngx_errno.h"
 #include "ngx_times.h"
 #include "ngx_auto_config.h"
 

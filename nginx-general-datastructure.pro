@@ -10,7 +10,8 @@ SOURCES += \
     ngx_alloc.c \
     ngx_log.c \
     ngx_times.c \
-    ngx_time.c
+    ngx_time.c \
+    ngx_linux_config.c
 
 include(deployment.pri)
 qtcAddDeployment()
@@ -32,7 +33,9 @@ HEADERS += \
     ngx_log.h \
     ngx_conf_file.h \
     ngx_alloc.h \
-    ngx_errno.h \
     ngx_times.h \
     ngx_auto_config.h
+
+DISTFILES += \
+    ReadMe
 

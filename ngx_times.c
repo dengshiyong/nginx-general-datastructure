@@ -4,6 +4,7 @@ static ngx_uint_t slot;
 static ngx_atomic_t ngx_time_lock;
 
 volatile ngx_msec_t ngx_current_msec;
+volatile ngx_time_t *ngx_cached_time;
 volatile ngx_str_t ngx_cached_err_log_time;
 
 #if !(NGX_WIN32)
@@ -20,6 +21,7 @@ static ngx_time_t cached_time[NGX_TIME_SLOTS];
 static u_char cached_err_log_time[NGX_TIME_SLOTS][sizeof("1970/09/28 12:00:00")];
 void ngx_time_init(void){
     ngx_cached_err_log_time.len = sizeof("1970/09/28 12:00:00") - 1;
+    ngx_cached_time = &cached_time[0];
     ngx_time_update();
 }
 void ngx_time_update(){
@@ -63,7 +65,7 @@ void ngx_time_update(){
     ngx_gmtime(sec,&gmt);
 
 #if (NGX_HAVE_GETTIMEZONE)
-    //I can not finde the ngx_gettimezone definition
+    //I can not find the ngx_gettimezone definition
     tp->gmtoff = ngx_gettimezone();
     ngx_gmtime(sec + tp->gmtoff * 60,&tm);
 #elif (NGX_HAVE_GMTOFF)
@@ -84,6 +86,7 @@ void ngx_time_update(){
 
     ngx_memory_barrier();
 
+    ngx_cached_time = tp;
     ngx_cached_err_log_time.data = p1;
 
     ngx_unlock(&ngx_time_lock);

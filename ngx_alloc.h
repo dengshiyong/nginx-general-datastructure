@@ -3,6 +3,8 @@
 #define NGX_ALLOC_H
 #include "ngx_core.h"
 void *ngx_alloc (size_t size,ngx_log_t *log);
+
+#define ngx_free free
 /*
  * Linux has memalign() or posix_memalign()
  * Solaris has memalign()

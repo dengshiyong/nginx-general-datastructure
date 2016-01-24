@@ -1,0 +1,12 @@
+1.Introduction
+this is the general datastructure which can compile correctly under linux from nginx-1.8.0.
+the project do not implement the NGX_DEBUG mode
+2.Usage
+3.Note
+(1)in my main() function we should call these functions in order:
+1)ngx_strerror_init
+2)ngx_time_init
+4)ngx_log_init
+3) ngx_use_stderr = 0
+4.shoud fix
+(1)the memory of ngx_sys_errlist  ,ｐ define in ngx_strerror_init function do not free,it will make the memory leak.

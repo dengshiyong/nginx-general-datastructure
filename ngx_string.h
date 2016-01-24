@@ -18,6 +18,8 @@ typedef struct {
 }ngx_variable_value_t;
 
 #define ngx_string(str) {sizeof(str) - 1,(u_char*)(str)}
+#define ngx_null_string {0,NULL}
+#define ngx_strlen(s) strlen((const char*)s)
 #define ngx_memcpy(dst,src,n) (void) memcpy(dst,src,n)
 #define ngx_cpymem(dst,src,n) (((u_char *) memcpy(dst,src,n)) + (n))
 
@@ -28,7 +30,9 @@ typedef struct {
  */
 #define ngx_memzero(buf,n) (void)memset(buf,0,n)
 
+u_char * ngx_cpystrn(u_char *dst,u_char *src,size_t n);
 u_char * ngx_cdecl ngx_sprintf(u_char *buf,const char *fmt,...);
+u_char * ngx_cdecl  ngx_slprintf(u_char *buf,u_char *last,const char *fmt,...);
 u_char * ngx_vslprintf(u_char *buf,u_char * last,const char *fmt,va_list args);
 static u_char * ngx_sprintf_num(u_char * buf,u_char *last,u_int64_t ui64,u_char zero, ngx_uint_t hexademical,ngx_uint_t width);
 
