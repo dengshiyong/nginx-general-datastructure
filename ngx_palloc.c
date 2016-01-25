@@ -122,9 +122,77 @@ static void * ngx_palloc_block(ngx_pool_t *pool,size_t size){
 
     psize = (size_t)(pool->d.end - (u_char *)pool);
 
+    m = ngx_memalign(NGX_POOL_ALIGNMENT,psize,pool->log);
+    if (m ==  NULL){
+        return NULL;
+    }
+
+    new = (ngx_pool_t *) m;
+    new->d.end = m + psize;
+    new->d.next = NULL;
+    new->d.failed = 0;
+
+    m += sizeof(ngx_pool_data_t);
+    m = ngx_align_ptr(m,NGX_ALIGNMENT);
+    new->d.last = m + size;
+
+    for (p = pool->current;p->d.next;p = p->d.next){
+        if (p->d.failed++ > 4){
+            pool->current = p->d.next;
+        }
+    }
+
+    p->d.next = new;
+
+    return m;
 }
 
+static void * ngx_palloc_large(ngx_pool_t *pool, size_t size){
+   void *p;
+   ngx_uint_t n;
+   ngx_pool_large_t *large;
+   p = ngx_alloc(size,pool->log);
+   if (p == NULL){
+       return NULL;
+   }
 
+   n = 0;
+
+   for (large = pool->large;large;large = large->next){
+       if (large->alloc = NULL){
+           large->alloc = p;
+           return p;
+       }
+
+       if (n++ > 3){
+           break;
+       }
+   }
+
+   large = ngx_palloc(pool,sizeof(ngx_pool_large_t));
+   if (large == NULL){
+       ngx_free(p);
+       return NULL;
+   }
+
+   large->alloc = p;
+   large->next = pool->large;
+   pool->large = large;
+
+   return p;
+}
+
+void * ngx_pmemalign(ngx_pool_t *pool,size_t size,size_t alignment){
+    void *p;
+    ngx_pool_large_t *large;
+
+    p = ngx_memalign(alignment,size,pool->log);
+
+    if (p == NULL){
+        return NULL;
+    }
+
+}
 
 
 
