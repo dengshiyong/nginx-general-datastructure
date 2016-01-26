@@ -192,6 +192,17 @@ void * ngx_pmemalign(ngx_pool_t *pool,size_t size,size_t alignment){
         return NULL;
     }
 
+    large = ngx_palloc(pool,sizeof(ngx_pool_large_t));
+    if (large == NULL){
+        ngx_free(p);
+        return NULL;
+    }
+
+    large->alloc = p;
+    large->next = pool->large;
+    pool->large = large;
+
+    return p;
 }
 
 
