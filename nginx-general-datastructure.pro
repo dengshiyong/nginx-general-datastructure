@@ -11,7 +11,16 @@ SOURCES += \
     ngx_log.c \
     ngx_times.c \
     ngx_time.c \
-    ngx_linux_config.c
+    ngx_linux_config.c \
+    src/ngx_alloc.c \
+    src/ngx_linux_config.c \
+    src/ngx_log.c \
+    src/ngx_palloc.c \
+    src/ngx_string.c \
+    src/ngx_time.c \
+    src/ngx_times.c \
+    test/test_ngx_sprintf.c \
+    test/test_ngx_palloc.c
 
 include(deployment.pri)
 qtcAddDeployment()
@@ -34,7 +43,24 @@ HEADERS += \
     ngx_conf_file.h \
     ngx_alloc.h \
     ngx_times.h \
-    ngx_auto_config.h
+    ngx_auto_config.h \
+    src/ngx_alloc.h \
+    src/ngx_atomic.h \
+    src/ngx_auto_config.h \
+    src/ngx_buf.h \
+    src/ngx_conf_file.h \
+    src/ngx_config.h \
+    src/ngx_core.h \
+    src/ngx_file.h \
+    src/ngx_files.h \
+    src/ngx_linux_config.h \
+    src/ngx_log.h \
+    src/ngx_palloc.h \
+    src/ngx_process.h \
+    src/ngx_rbtree.h \
+    src/ngx_string.h \
+    src/ngx_time.h \
+    src/ngx_times.h
 
 DISTFILES += \
     ReadMe

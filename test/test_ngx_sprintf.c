@@ -1,6 +1,6 @@
-// gcc -o test_ngx_sprintf *.c
+// gcc -o test_ngx_sprintf ../src/*.c -I ../src/
 //./test_ngx_sprintf
-#include "ngx_core.h"
+#include "../src/ngx_core.h"
 int main (){
     char buf[30];
     ngx_memzero(buf,sizeof(buf));
