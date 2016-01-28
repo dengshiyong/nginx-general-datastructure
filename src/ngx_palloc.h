@@ -1,7 +1,7 @@
 #ifndef NGX_PALLOC_H
 #define NGX_PALLOC_H
 
-#include <ngx_core.h>
+#include "ngx_core.h"
 /*
  * NGX_MAX_ALLOC_FROM_POOL should be (ngx_pagesize - 1), i.e. 4095 on x86.
  * On Windows NT it decreases a number of locked pages in a kernel.

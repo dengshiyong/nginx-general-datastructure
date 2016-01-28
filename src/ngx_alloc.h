@@ -19,5 +19,7 @@ void *ngx_memalign(size_t alignment,size_t size,ngx_log_t *log);
 #else
 #define ngx_memalign(alignment,size,log) ngx_alloc(size,log)
 #endif
+
+extern ngx_uint_t ngx_pagesize;
 #endif // NGX_ALLOC_H
 

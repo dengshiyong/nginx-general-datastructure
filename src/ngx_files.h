@@ -4,9 +4,9 @@
 #include <fcntl.h>
 #include "ngx_core.h"
 //this file exists in the os/unix direcory
-typedef int ngx_fd_t;
-
-typedef struct stat ngx_file_info_t;
+//typedef int ngx_fd_t;
+//
+//typedef struct stat ngx_file_info_t;
 
 #define NGX_INVALID_FILE -1
 #define NGX_FILE_ERROR -1

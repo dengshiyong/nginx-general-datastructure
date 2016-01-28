@@ -51,7 +51,7 @@ void ngx_log_error_core(ngx_uint_t level, ngx_log_t *log, ngx_err_t err, const c
 #if (NGX_HAVE_VARIADIC_MACROS)
     va_start (args,fmt);
     p = ngx_vslprintf(p,last,fmt,args);
-    va_end (args,fmt);
+    va_end (args);
 
 #else
     p = ngx_vslprintf(p,last,fmt,args);
@@ -125,7 +125,7 @@ void ngx_cdecl ngx_log_error(ngx_uint_t level,ngx_log_t *log,ngx_err_t err,const
     if  (log->log_level >= level){
         va_start (args,fmt);
         ngx_log_error_core(level,log,err,fmt,args);
-        va_end (args,fmt);
+        va_end (args);
     }
 }
 
@@ -133,7 +133,7 @@ void ngx_cdecl ngx_log_debug_core(ngx_log_t *log,ngx_err_t err,const char * fmt,
     va_list args;
     va_start(args,fmt);
     ngx_log_error_core(NGX_LOG_DEBUG,log,err,fmt,args);
-    va_end (args,fmt);
+    va_end (args);
 }
 
 #endif
@@ -239,7 +239,7 @@ void ngx_cdecl ngx_log_stderr(ngx_err_t err,const char *fmt,...){
 
     va_start (args,fmt);
     p = ngx_slprintf(p,last,fmt,args);
-    va_end (args,fmt);
+    va_end (args);
 
     if (err){
         p = ngx_log_errno(p,last,err);

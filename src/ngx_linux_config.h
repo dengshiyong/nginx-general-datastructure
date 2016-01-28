@@ -5,6 +5,11 @@
 //unistd.h　defined the getpid() write () function
 #include <unistd.h>
 #include "ngx_core.h"
+
+typedef int ngx_fd_t;
+
+typedef struct stat ngx_file_info_t;
+
 //the next 3 lines is os/unix/ngx_errno.h under nginx-1.8.0
 typedef int ngx_err_t;
 #define NGX_ENOSPC ENOSPC

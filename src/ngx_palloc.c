@@ -283,8 +283,7 @@ void ngx_pool_cleanup_file (void *data){
 void ngx_pool_delete_file(void *data){
     ngx_pool_cleanup_file_t *cf = data;
     ngx_err_t err;
-
-    if (ngx_delete_file(cf->name) == NGX_FILE_ERROR){
+    if(ngx_delete_file(cf->name) == NGX_FILE_ERROR){
         err = ngx_errno;
 
         if (err != NGX_ENOENT){
