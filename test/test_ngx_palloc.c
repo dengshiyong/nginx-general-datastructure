@@ -4,8 +4,13 @@
 int main(int argc, char *argv[])
 {
     ngx_int_t n;
+    ngx_log_t * log;
     n =  ngx_strerror_init();
-    if (n )
-    return 0;
+    if (n == NGX_ERROR){
+        return NGX_ERROR;
+    }
+    ngx_time_init();
+    log =  ngx_log_init((u_char *))
+
 }
 
