@@ -280,24 +280,28 @@ void ngx_pool_cleanup_file (void *data){
    }
 }
 
-void ngx_pool_delete_file(void *data){
-    ngx_pool_cleanup_file_t *cf = data;
-    ngx_err_t err;
-    if(ngx_delete_file(cf->name) == NGX_FILE_ERROR){
-        err = ngx_errno;
 
-        if (err != NGX_ENOENT){
-            ngx_log_error(NGX_LOG_CRIT,cf->log,err,
-                          ngx_delete_file_n "\"%s\" failed",cf->name);
-        }
-    }
-
-    if (ngx_close_file(cf->fd) == NGX_FILE_ERROR){
-       ngx_log_error(NGX_LOG_ALERT,cf->log,ngx_errno,
-                     ngx_close_file_n "\"%s\" failed",cf->name);
-    }
-}
-
+//void
+//ngx_pool_delete_file(void *data)
+//{
+//    ngx_pool_cleanup_file_t  *cf = data;
+//
+//    ngx_err_t  err;
+//
+//    if (ngx_delete_file(cf->name) == NGX_FILE_ERROR) {
+//        err = ngx_errno;
+//
+//        if (err != NGX_ENOENT) {
+//            ngx_log_error(NGX_LOG_CRIT, cf->log, err,
+//                          ngx_delete_file_n " \"%s\" failed", cf->name);
+//        }
+//    }
+//
+//    if (ngx_close_file(cf->fd) == NGX_FILE_ERROR) {
+//        ngx_log_error(NGX_LOG_ALERT, cf->log, ngx_errno,
+//                      ngx_close_file_n " \"%s\" failed", cf->name);
+//    }
+//}
 
 
 

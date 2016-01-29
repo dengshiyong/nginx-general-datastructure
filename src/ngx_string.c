@@ -66,7 +66,7 @@ u_char * ngx_cdecl  ngx_slprintf(u_char *buf,u_char *last,const char *fmt,...){
     va_list args;
     va_start(args,fmt);
     p = ngx_vslprintf(buf,last,fmt,args);
-    va_end (args,fmt);
+    va_end (args);
     return p;
 }
 
