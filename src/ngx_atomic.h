@@ -33,7 +33,7 @@ static ngx_inline ngx_atomic_uint_t ngx_atomic_cmp_set (ngx_atomic_t  *lock,ngx_
 }
 #define ngx_memory_barrier() __asm__ volatile ("" ::: "memory")
 //that's all
-#define ngx_trylock (lock) (*(lock) == 0 && ngx_atomic_cmp_set (lock,0,1))
-#define ngx_unlock (lock) *(lock) = 0
+#define ngx_trylock(llock) (*(llock) == 0 && ngx_atomic_cmp_set (llock,0,1))
+#define ngx_unlock(llock) *(llock) = 0
 #endif // NGX_ATOMIC_H
 

@@ -38,7 +38,7 @@ void ngx_log_error_core(ngx_uint_t level, ngx_log_t *log, ngx_err_t err, const c
     p = ngx_cpymem(errstr,ngx_cached_err_log_time.data,
                    ngx_cached_err_log_time.len);
     p = ngx_slprintf(p,last,"[%V]",err_levels[level]);
-    //just for making the database can work correctly,comment the next function
+    //just for making the datastructure can work correctly,comment the next function
     /* pid#tid */
     // p = ngx_slprintf(p,last,"%P#" NGX_TID_T_FMT ": ",
     // ngx_log_pid,ngx_log_tid);

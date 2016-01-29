@@ -2,8 +2,7 @@
 #ifndef NGX_TIME_H
 #define NGX_TIME_H
 //for the struct tm should include time.h
-//but time.h is included in sys/time.h
-//#include <time.h>
+#include <time.h>
 //for gettimeofday
 #include <sys/time.h>
 #include "ngx_core.h"
@@ -30,10 +29,10 @@ typedef struct tm ngx_tm_t;
 #define ngx_tm_year_t int
 #define ngx_tm_wday_t int
 
-#if (NGX_HAVE_GMTOFF)
+//#if (NGX_HAVE_GMTOFF)
 #define ngx_tm_gmtoff tm_gmtoff
 #define ngx_tm_zone tm_zone
-#endif
+//#endif
 
 #if (NGX_SOLARIS)
 #define ngx_timezone (isdst) (- (isdst ? altzone : timezone) / 60)

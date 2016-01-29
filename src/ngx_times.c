@@ -70,6 +70,7 @@ void ngx_time_update(){
     ngx_gmtime(sec + tp->gmtoff * 60,&tm);
 #elif (NGX_HAVE_GMTOFF)
    ngx_localtime(sec,&tm);
+//   cached_gmtoff = (ngx_int_t) (tm.tm_gmtoff / 60);
    cached_gmtoff = (ngx_int_t) (tm.ngx_tm_gmtoff / 60);
    tp->gmtoff = cached_gmtoff;
 #else
@@ -94,7 +95,7 @@ void ngx_time_update(){
 
 void ngx_gmtime(time_t t, ngx_tm_t *tp){
     ngx_int_t yday;
-    ngx_uint_t n,sec,min,hour,mday,mon,year,wday,days,lea;
+    ngx_uint_t n,sec,min,hour,mday,mon,year,wday,days,leap;
     /* the calculation is valid for positive time_t only */
 
     n = (ngx_uint_t) t;
