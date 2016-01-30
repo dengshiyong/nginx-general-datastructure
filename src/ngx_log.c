@@ -37,26 +37,20 @@ void ngx_log_error_core(ngx_uint_t level, ngx_log_t *log, ngx_err_t err, const c
     //it seems do not set the ngx_cached_err_log_time.len value
     p = ngx_cpymem(errstr,ngx_cached_err_log_time.data,
                    ngx_cached_err_log_time.len);
-    printf("here1\n");
     p = ngx_slprintf(p,last,"[%V]",&err_levels[level]);
-    printf("here2\n");
    //just for making the datastructure can work correctly,comment the next function
     /* pid#tid */
     // p = ngx_slprintf(p,last,"%P#" NGX_TID_T_FMT ": ",
     // ngx_log_pid,ngx_log_tid);
     if (log->connection) {
-        printf("here3\n");
         p = ngx_slprintf(p,last,"*%uA ",log->connection);
-        printf("here4\n");
    }
 
     msg = p;
 
 #if (NGX_HAVE_VARIADIC_MACROS)
     va_start (args,fmt);
-    printf("here5\n");
     p = ngx_vslprintf(p,last,fmt,args);
-    printf("here6\n");
     va_end (args);
 
 #else
