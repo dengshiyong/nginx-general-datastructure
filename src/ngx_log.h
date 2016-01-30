@@ -56,7 +56,7 @@ void ngx_log_error_core (ngx_uint_t level,ngx_log_t *log,ngx_err_t err,const cha
 /*********************************/
 #elif (NGX_HAVE_GCC_VARIADIC_MACROS)
 #define NGX_HAVE_VARIADIC_MACROS 1
-#define ngx_log_error (level,log,args,...) if ((log)->log_level >= level) ngx_log_error_core (level,log,args)
+#define ngx_log_error (level,log,args...) if ((log)->log_level >= level) ngx_log_error_core (level,log,args)
 
 void ngx_log_error_core (ngx_uint_t level,ngx_log_t *log,ngx_err_t err,const char* fmt,...);
 

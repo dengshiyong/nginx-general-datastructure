@@ -1,4 +1,8 @@
-// gcc -o test_ngx_palloc../src/*.c -I ../src/
+// gcc -o test_ngx_palloc ../src/*.c  test_ngx_palloc.c -I ../src/
+// mkdir -v logs
+// cd logs
+// touch error.log
+// cd ..
 // ./test_ngx_palloc
 #include "../src/ngx_core.h"
 int main(int argc, char *argv[])
@@ -40,8 +44,7 @@ int main(int argc, char *argv[])
 //    printf ("the address of buf is  %p\n",buf);
 //    printf ("the address of last is %p\n",buf+NGX_MAX_ERROR_STR);
     //test log
-    ngx_log_error(NGX_LOG_ALERT,log,NGX_OK,
-                  "the pool end is: \"%s\" ",pool->d.end);
+    ngx_log_error(NGX_LOG_ALERT,log,NGX_OK,"the pool end is: \"%s\" ",pool->d.end);
 
     //test destroy pool
    ngx_destroy_pool(pool);
