@@ -145,15 +145,8 @@ u_char * ngx_vslprintf(u_char *buf,u_char * last,const char *fmt,va_list args){
            switch (*fmt) {
            case 'V':
                v = va_arg(args,ngx_str_t*);
-               if (v != NULL){
-                   len = ngx_min(((size_t)(last - buf)),v->len);
-               }
-               else {
-                   len = 0;
-               }
-               if (len != 0){
-                   buf = ngx_cpymem(buf,v->data,len);
-               }
+               len = ngx_min(((size_t)(last - buf)),v->len);
+               buf = ngx_cpymem(buf,v->data,len);
                fmt++;
 
                continue;

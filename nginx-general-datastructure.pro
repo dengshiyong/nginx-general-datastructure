@@ -20,7 +20,8 @@ SOURCES += \
     src/ngx_time.c \
     src/ngx_times.c \
     test/test_ngx_sprintf.c \
-    test/test_ngx_palloc.c
+    test/test_ngx_palloc.c \
+    src/ngx_list.c
 
 include(deployment.pri)
 qtcAddDeployment()
@@ -60,7 +61,8 @@ HEADERS += \
     src/ngx_rbtree.h \
     src/ngx_string.h \
     src/ngx_time.h \
-    src/ngx_times.h
+    src/ngx_times.h \
+    src/ngx_list.h
 
 DISTFILES += \
     ReadMe
