@@ -21,7 +21,8 @@ SOURCES += \
     src/ngx_times.c \
     test/test_ngx_sprintf.c \
     test/test_ngx_palloc.c \
-    src/ngx_list.c
+    src/ngx_list.c \
+    test/test_ngx_list.c
 
 include(deployment.pri)
 qtcAddDeployment()
