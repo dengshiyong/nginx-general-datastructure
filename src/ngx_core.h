@@ -35,6 +35,7 @@ typedef struct ngx_open_file_s ngx_open_file_t;
 #include "ngx_times.h"
 #include "ngx_auto_config.h"
 #include "ngx_list.h"
+#include "ngx_queue.h"
 
 #define CR (u_char)'\r'
 #define LF (u_char)'\n'

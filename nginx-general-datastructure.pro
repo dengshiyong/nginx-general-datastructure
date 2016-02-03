@@ -63,7 +63,8 @@ HEADERS += \
     src/ngx_string.h \
     src/ngx_time.h \
     src/ngx_times.h \
-    src/ngx_list.h
+    src/ngx_list.h \
+    src/ngx_queue.h
 
 DISTFILES += \
     ReadMe
