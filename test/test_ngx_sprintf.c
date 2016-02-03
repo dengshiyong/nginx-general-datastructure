@@ -33,6 +33,7 @@ int main(int argc, char *argv[])
      printf ("the buf is %s\n",buf);
      printf ("the address of buf is  %p\n",buf);
      printf ("the address of last is %p\n",buf+NGX_MAX_ERROR_STR);
+     ngx_log_stderr(NGX_ERROR,"the str \n");
 
      return NGX_OK;
 }

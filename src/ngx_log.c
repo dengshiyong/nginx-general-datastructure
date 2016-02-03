@@ -207,47 +207,58 @@ ngx_log_t *ngx_log_init(u_char *prefix){
 }
 
 u_char * ngx_log_errno (u_char *buf,u_char *last,ngx_err_t err){
-    if( buf > last - 50){
-         /* leave a space for an error code */
+    if (buf > last - 50) {
+
+        /* leave a space for an error code */
+
         buf = last - 50;
         *buf++ = '.';
         *buf++ = '.';
         *buf++ = '.';
     }
+
 #if (NGX_WIN32)
-    buf = ngx_slprintf(buf,last,((unsigned) err < 0x80000000) ? "(%d: " : "(%Xd: ",err);
+    buf = ngx_slprintf(buf, last, ((unsigned) err < 0x80000000)
+                                       ? " (%d: " : " (%Xd: ", err);
 #else
-    buf = ngx_slprintf(buf,last,"(%d: ",err);
+    buf = ngx_slprintf(buf, last, " (%d: ", err);
 #endif
 
-    buf = ngx_strerror(err,buf,last-buf);
+    buf = ngx_strerror(err, buf, last - buf);
 
-    if (buf < last){
+    if (buf < last) {
         *buf++ = ')';
     }
+
     return buf;
-}
+
+
+ }
 
 void ngx_cdecl ngx_log_stderr(ngx_err_t err,const char *fmt,...){
     u_char *p,*last;
     va_list args;
     u_char errstr[NGX_MAX_ERROR_STR];
-
     last = errstr + NGX_MAX_ERROR_STR;
 
     p = ngx_cpymem(errstr,"nginx: ",7);
 
     va_start (args,fmt);
+
     p = ngx_slprintf(p,last,fmt,args);
+
     va_end (args);
 
     if (err){
         p = ngx_log_errno(p,last,err);
-    }
+   }
     if (p > last - NGX_LINEFEED_SIZE){
         p = last - NGX_LINEFEED_SIZE;
     }
+
     ngx_linefeed(p);
+
     (void) ngx_write_console(ngx_stderr,errstr,p-errstr);
+
 }
 

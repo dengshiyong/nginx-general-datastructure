@@ -68,3 +68,6 @@ HEADERS += \
 DISTFILES += \
     ReadMe
 
+OTHER_FILES += \
+    ReadMe
+
