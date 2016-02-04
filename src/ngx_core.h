@@ -7,6 +7,8 @@
 #include <string.h>
 //errno.h defined the errno macro
 #include <errno.h>
+//stddef.h defined offsetof macro
+#include <stddef.h>
 typedef struct ngx_pool_s ngx_pool_t;
 typedef struct ngx_chain_s ngx_chain_t;
 typedef struct ngx_file_s ngx_file_t;

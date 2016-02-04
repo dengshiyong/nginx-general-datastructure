@@ -22,7 +22,9 @@ SOURCES += \
     test/test_ngx_sprintf.c \
     test/test_ngx_palloc.c \
     src/ngx_list.c \
-    test/test_ngx_list.c
+    test/test_ngx_list.c \
+    src/ngx_queue.c \
+    test/test_ngx_queue.c
 
 include(deployment.pri)
 qtcAddDeployment()
