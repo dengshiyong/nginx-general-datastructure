@@ -24,7 +24,9 @@ SOURCES += \
     src/ngx_list.c \
     test/test_ngx_list.c \
     src/ngx_queue.c \
-    test/test_ngx_queue.c
+    test/test_ngx_queue.c \
+    src/ngx_array.c \
+    test/test_ngx_array.c
 
 include(deployment.pri)
 qtcAddDeployment()
@@ -66,7 +68,8 @@ HEADERS += \
     src/ngx_time.h \
     src/ngx_times.h \
     src/ngx_list.h \
-    src/ngx_queue.h
+    src/ngx_queue.h \
+    src/ngx_array.h
 
 DISTFILES += \
     ReadMe

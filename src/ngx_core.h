@@ -38,6 +38,7 @@ typedef struct ngx_open_file_s ngx_open_file_t;
 #include "ngx_auto_config.h"
 #include "ngx_list.h"
 #include "ngx_queue.h"
+#include "ngx_array.h"
 
 #define CR (u_char)'\r'
 #define LF (u_char)'\n'
