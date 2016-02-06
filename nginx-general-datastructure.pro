@@ -26,7 +26,8 @@ SOURCES += \
     src/ngx_queue.c \
     test/test_ngx_queue.c \
     src/ngx_array.c \
-    test/test_ngx_array.c
+    test/test_ngx_array.c \
+    src/ngx_rbtree.c
 
 include(deployment.pri)
 qtcAddDeployment()
